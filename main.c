@@ -8,25 +8,21 @@
 
 void main() 
 {   
-    font_t min_font;
-    font_init();
-    min_font = font_load(font_min); //36 tiles
-    font_set(min_font);
-
-    set_bkg_data(37, 7, TileLabel);
-    set_bkg_tiles(0, 0, 40, 18, simplebg_map);
-
-    set_win_tiles(0, 0, 5, 1, windowmap);
-
-    move_win(7, 130);
-
-    SHOW_BKG;
-    SHOW_WIN;
-    DISPLAY_ON;
+    NR52_REG = 0x80;
+    NR50_REG = 0x77;
+    NR51_REG = 0xFF;
 
     while (1) 
     {
-        scroll_bkg(1, 0);
-        delay(50);
+        UBYTE joypad_state = joypad();
+        if (joypad_state)
+        {
+            NR10_REG = 0x16;
+            NR11_REG = 0x40;
+            NR12_REG = 0x73;
+            NR13_REG = 0x00;
+            NR14_REG = 0xC3;
+            delay(1000);
+        }
     }
 }
