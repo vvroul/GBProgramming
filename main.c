@@ -17,11 +17,11 @@ void main()
         UBYTE joypad_state = joypad();
         if (joypad_state)
         {
-            NR10_REG = 0x16;
-            NR11_REG = 0x40;
-            NR12_REG = 0x73;
-            NR13_REG = 0x00;
-            NR14_REG = 0xC3;
+            NR41_REG = 0x1F;
+            NR42_REG = 0xF1;
+            NR43_REG = 0x30;
+            NR44_REG = 0xC0;
+            // NR14_REG = 0xC3;
             delay(1000);
         }
     }

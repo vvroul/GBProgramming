@@ -1,9 +1,9 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : FreeWare ANSI-C Compiler
-                              3 ; Version 2.2.1 Sun Dec 29 14:03:07 2019
+                              3 ; Version 2.2.1 Mon Dec 30 13:14:31 2019
                               4 
                               5 ;--------------------------------------------------------
-                              6 	.module lcc134320
+                              6 	.module lcc68960
                               7 	
                               8 ;--------------------------------------------------------
                               9 ; Public variables in this module
@@ -5475,46 +5475,41 @@
    0013 CA 0D 00           5475 	jp	z,00104$
                            5476 ;	main.c 20
                            5477 ; genAssign
-                           5478 ; AOP_SFR for _NR10_REG
-   0016 3E 16              5479 	ld	a,#0x16
-   0018 E0 00              5480 	ldh	(_NR10_REG+0),a
+                           5478 ; AOP_SFR for _NR41_REG
+   0016 3E 1F              5479 	ld	a,#0x1F
+   0018 E0 00              5480 	ldh	(_NR41_REG+0),a
                            5481 ;	main.c 21
                            5482 ; genAssign
-                           5483 ; AOP_SFR for _NR11_REG
-   001A 3E 40              5484 	ld	a,#0x40
-   001C E0 00              5485 	ldh	(_NR11_REG+0),a
+                           5483 ; AOP_SFR for _NR42_REG
+   001A 3E F1              5484 	ld	a,#0xF1
+   001C E0 00              5485 	ldh	(_NR42_REG+0),a
                            5486 ;	main.c 22
                            5487 ; genAssign
-                           5488 ; AOP_SFR for _NR12_REG
-   001E 3E 73              5489 	ld	a,#0x73
-   0020 E0 00              5490 	ldh	(_NR12_REG+0),a
+                           5488 ; AOP_SFR for _NR43_REG
+   001E 3E 30              5489 	ld	a,#0x30
+   0020 E0 00              5490 	ldh	(_NR43_REG+0),a
                            5491 ;	main.c 23
                            5492 ; genAssign
-                           5493 ; AOP_SFR for _NR13_REG
-   0022 3E 00              5494 	ld	a,#0x00
-   0024 E0 00              5495 	ldh	(_NR13_REG+0),a
-                           5496 ;	main.c 24
-                           5497 ; genAssign
-                           5498 ; AOP_SFR for _NR14_REG
-   0026 3E C3              5499 	ld	a,#0xC3
-   0028 E0 00              5500 	ldh	(_NR14_REG+0),a
-                           5501 ;	main.c 25
-                           5502 ; genIpush
-   002A 21 E8 03           5503 	ld	hl,#0x03E8
-   002D E5                 5504 	push	hl
-                           5505 ; genCall
-   002E CD 00 00           5506 	call	_delay
-   0031 E8 02              5507 	lda	sp,2(sp)
-                           5508 ; genGoto
-   0033 C3 0D 00           5509 	jp	00104$
-                           5510 ; genLabel
-   0036                    5511 00106$:
-                           5512 ; genEndFunction
-                           5513 	
-   0036 C1                 5514 	pop	bc
-   0037 C9                 5515 	ret
-   0038                    5516 ___main_end:
-                           5517 	.area _CODE
+                           5493 ; AOP_SFR for _NR44_REG
+   0022 3E C0              5494 	ld	a,#0xC0
+   0024 E0 00              5495 	ldh	(_NR44_REG+0),a
+                           5496 ;	main.c 25
+                           5497 ; genIpush
+   0026 21 E8 03           5498 	ld	hl,#0x03E8
+   0029 E5                 5499 	push	hl
+                           5500 ; genCall
+   002A CD 00 00           5501 	call	_delay
+   002D E8 02              5502 	lda	sp,2(sp)
+                           5503 ; genGoto
+   002F C3 0D 00           5504 	jp	00104$
+                           5505 ; genLabel
+   0032                    5506 00106$:
+                           5507 ; genEndFunction
+                           5508 	
+   0032 C1                 5509 	pop	bc
+   0033 C9                 5510 	ret
+   0034                    5511 ___main_end:
+                           5512 	.area _CODE
 ASxxxx Assembler V01.75  (GameBoy Z80-like CPU), page 1.
 
 Symbol Table
@@ -5576,7 +5571,7 @@ Symbol Table
     _VBK_REG                           **** GX
     _WX_REG                            **** GX
     _WY_REG                            **** GX
-  0 ___main_end                        0038 R
+  0 ___main_end                        0034 R
   0 ___main_start                      0000 R
     __cpu                              **** GX
     __io_in                            **** GX
@@ -5598,7 +5593,7 @@ Symbol Table
 
 Area Table
 
-   0 _CODE                              size   38   flags 0
+   0 _CODE                              size   34   flags 0
    1 _DATA                              size  375   flags 0
    2 _OVERLAY                           size    0   flags 0
    3 _ISEG                              size    0   flags 0
