@@ -101,7 +101,7 @@ void main()
         }
         moveGameCharacter(&buggy, buggy.x, buggy.y);
 
-        performantDelay(5)
+        performantDelay(5);
     }
     
 }
