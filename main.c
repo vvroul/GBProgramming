@@ -8,18 +8,22 @@
 #include "GameCharacter.c"
 #include "GameSprites.c"
 
-struct GameCharacter ship;
-struct GameCharacter buggy;
+GameCharacter ship;
+GameCharacter buggy;
 UBYTE spriteSize = 8;
 
-void moveGameCharacter(struct GameCharacter* character, UINT8 x, UINT8 y)
+UBYTE checkCollision(GameCharacter* one, GameCharacter* two)
+{
+    return (one->x >= two->x && one->x <= two->x + two->width) && (one->y >= two->y && one->x <= two->y + two->height) || (two->x >= one->x && two->x <= one->x + one->width) && (two->y >= one->y && two->x <= one->y + one->height);
+}
+
+void moveGameCharacter(GameCharacter* character, UINT8 x, UINT8 y)
 {
     move_sprite(character->spritids[0], x, y);
     move_sprite(character->spritids[1], x + spriteSize, y);
     move_sprite(character->spritids[2], x, y + spriteSize);
     move_sprite(character->spritids[3], x + spriteSize, y + spriteSize);
 }
-
 
 void setupShip()
 {
@@ -70,16 +74,13 @@ void performantDelay(UINT8 numloops)
 
 void main() 
 {
-
     set_sprite_data(0, 8, GameSprites);
-
     setupShip();
     setupBug();
-
     SHOW_SPRITES;
     DISPLAY_ON;
 
-    while(1)
+    while(!checkCollision(&ship, &buggy))     //while we don't have a collision
     {
         if (joypad() & J_LEFT)
         {
@@ -100,8 +101,8 @@ void main()
             buggy.x = ship.x;
         }
         moveGameCharacter(&buggy, buggy.x, buggy.y);
-
         performantDelay(5);
     }
-    
+
+    printf("\n \n \n \n \n \n \n **** GAME OVER ****");
 }
