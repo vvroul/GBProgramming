@@ -7,6 +7,8 @@
 #include "windowmap.c"
 #include "GameCharacter.c"
 #include "GameSprites.c"
+#include "mario_data.c"
+#include "mario_map.c"
 
 GameCharacter ship;
 GameCharacter buggy;
@@ -72,7 +74,7 @@ void performantDelay(UINT8 numloops)
     }
 }
 
-void main() 
+void oldMain() 
 {
     set_sprite_data(0, 8, GameSprites);
     setupShip();
@@ -105,4 +107,18 @@ void main()
     }
 
     printf("\n \n \n \n \n \n \n **** GAME OVER ****");
+}
+
+void main()
+{
+    set_bkg_data(0, 158, mario_data);
+    set_bkg_tiles(0, 0, 20, 18, mario_map);
+
+    SHOW_BKG;
+    DISPLAY_ON;
+
+    waitpad(J_START);
+
+    printf("START THE GAME");
+    // oldMain();
 }
