@@ -13,6 +13,7 @@
 GameCharacter ship;
 GameCharacter buggy;
 UBYTE spriteSize = 8;
+UINT8 iter;
 
 UBYTE checkCollision(GameCharacter* one, GameCharacter* two)
 {
@@ -109,6 +110,54 @@ void oldMain()
     printf("\n \n \n \n \n \n \n **** GAME OVER ****");
 }
 
+void fadeout()
+{
+    for (iter = 0; iter < 4; iter++)
+    {
+        switch (iter)
+        {
+            case 0:
+                BGP_REG = 0xE4;
+                break;
+            case 1:
+                BGP_REG = 0xF9;
+                break;
+            case 2:
+                BGP_REG = 0xFE;
+                break;
+            case 3:
+                BGP_REG = 0xFF;
+                break;
+            default:
+                break;
+        }
+        performantDelay(10);
+    }
+}
+
+void fadein()
+{
+    for (iter = 0; iter < 3; iter++)
+    {
+        switch (iter)
+        {
+            case 0:
+                BGP_REG = 0xFE;
+                break;
+            case 1:
+                BGP_REG = 0xF9;
+                break;
+            case 2:
+                BGP_REG = 0xE4;
+                break;
+            default:
+                break;
+        }
+        performantDelay(10);
+    }
+}
+
+
 void main()
 {
     set_bkg_data(0, 158, mario_data);
@@ -119,6 +168,10 @@ void main()
 
     waitpad(J_START);
 
-    printf("START THE GAME");
+    fadeout();
+
+    fadein();
+
+    // printf("START THE GAME");
     // oldMain();
 }
