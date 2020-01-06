@@ -1,9 +1,9 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : FreeWare ANSI-C Compiler
-                              3 ; Version 2.2.1 Sun Jan 05 10:48:20 2020
+                              3 ; Version 2.2.1 Mon Jan 06 12:08:58 2020
                               4 
                               5 ;--------------------------------------------------------
-                              6 	.module lcc124200
+                              6 	.module lcc110160
                               7 	
                               8 ;--------------------------------------------------------
                               9 ; Public variables in this module
@@ -160,7 +160,7 @@
                             160 	.area _GSINIT
                             161 	.area _GSFINAL
                             162 	.area _GSINIT
-                            163 ;	main.c 178
+                            163 ;	main.c 177
                             164 ; genAssign (pointer)
    0000 11 00 00            165 	ld	de,#_Knights + 0
    0003 3E 7E               166 	ld	a,#0x7E
@@ -351,7 +351,7 @@
                             351 ; genAssign (pointer)
    00BD 3E FF               352 	ld	a,#0xFF
    00BF 12                  353 	ld	(de),a
-                            354 ;	main.c 178
+                            354 ;	main.c 177
                             355 ; genAssign (pointer)
    00C0 11 20 00            356 	ld	de,#_TileLabel + 0
    00C3 3E 00               357 	ld	a,#0x00
@@ -1118,7 +1118,7 @@
                            1118 ; genAssign (pointer)
    03BD 3E 00              1119 	ld	a,#0x00
    03BF 12                 1120 	ld	(de),a
-                           1121 ;	main.c 178
+                           1121 ;	main.c 177
                            1122 ; genAssign (pointer)
    03C0 11 A0 00           1123 	ld	de,#_simplebg_map + 0
    03C3 3E 00              1124 	ld	a,#0x00
@@ -5437,7 +5437,7 @@
                            5437 ; genAssign (pointer)
    149D 3E 29              5438 	ld	a,#0x29
    149F 12                 5439 	ld	(de),a
-                           5440 ;	main.c 178
+                           5440 ;	main.c 177
                            5441 ; genAssign (pointer)
    14A0 11 70 03           5442 	ld	de,#_windowmap + 0
    14A3 3E 13              5443 	ld	a,#0x13
@@ -5466,7 +5466,7 @@
                            5466 ; genAssign (pointer)
    14BB 3E 1A              5467 	ld	a,#0x1A
    14BD 12                 5468 	ld	(de),a
-                           5469 ;	main.c 178
+                           5469 ;	main.c 177
                            5470 ; genAssign (pointer)
    14BE 11 75 03           5471 	ld	de,#_GameSprites + 0
    14C1 3E 00              5472 	ld	a,#0x00
@@ -6233,7 +6233,7 @@
                            6233 ; genAssign (pointer)
    17BB 3E 00              6234 	ld	a,#0x00
    17BD 12                 6235 	ld	(de),a
-                           6236 ;	main.c 178
+                           6236 ;	main.c 177
                            6237 ; genAssign
                            6238 ; AOP_HL for _spriteSize
    17BE 21 05 04           6239 	ld	hl,#_spriteSize + 0
@@ -10726,19 +10726,28 @@
                           10723 ; genCall
    10AD CD 00 00          10724 	call	_waitpad
    10B0 E8 01             10725 	lda	sp,1(sp)
-                          10726 ;	main.c 171
+                          10726 ;	main.c 170
                           10727 ; genCall
    10B2 CD D3 0F          10728 	call	_fadeout
-                          10729 ;	main.c 173
+                          10729 ;	main.c 171
                           10730 ; genCall
    10B5 CD 28 10          10731 	call	_fadein
-                          10732 ; genLabel
-   10B8                   10733 00101$:
-                          10734 ; genEndFunction
-                          10735 	
-   10B8 C9                10736 	ret
-   10B9                   10737 ___main_end:
-                          10738 	.area _CODE
+                          10732 ;	main.c 172
+                          10733 ; genAnd
+                          10734 ; AOP_SFR for _LCDC_REG
+   10B8 F0 00             10735 	ldh	a,(_LCDC_REG+0) ; x
+   10BA E6 FE             10736 	and	a,#0xFE
+   10BC E0 00             10737 	ldh	(_LCDC_REG+0),a
+                          10738 ;	main.c 175
+                          10739 ; genCall
+   10BE CD 85 0E          10740 	call	_oldMain
+                          10741 ; genLabel
+   10C1                   10742 00101$:
+                          10743 ; genEndFunction
+                          10744 	
+   10C1 C9                10745 	ret
+   10C2                   10746 ___main_end:
+                          10747 	.area _CODE
 ASxxxx Assembler V01.75  (GameBoy Z80-like CPU), page 1.
 
 Symbol Table
@@ -10807,7 +10816,7 @@ Symbol Table
   0 ___fadein_start                    1028 R
   0 ___fadeout_end                     1028 R
   0 ___fadeout_start                   0FD3 R
-  0 ___main_end                        10B9 R
+  0 ___main_end                        10C2 R
   0 ___main_start                      1073 R
   0 ___moveGameCharacter_end           0D4B R
   0 ___moveGameCharacter_start         0CC1 R
@@ -10861,7 +10870,7 @@ Symbol Table
 
 Area Table
 
-   0 _CODE                              size 10B9   flags 0
+   0 _CODE                              size 10C2   flags 0
    1 _DATA                              size  407   flags 0
    2 _OVERLAY                           size    0   flags 0
    3 _ISEG                              size    0   flags 0

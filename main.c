@@ -167,11 +167,10 @@ void main()
     DISPLAY_ON;
 
     waitpad(J_START);
-
     fadeout();
-
     fadein();
+    HIDE_BKG;
 
     // printf("START THE GAME");
-    // oldMain();
+    oldMain();
 }
